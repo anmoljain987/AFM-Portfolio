@@ -68,7 +68,10 @@ a{color:inherit;text-decoration:none}
 
 /* ───── the layered backdrop: flat theme colour + a grain that
    never scrolls, so the page reads as printed rather than drawn ───── */
-.bg-layers{position:fixed;inset:0;z-index:-1;pointer-events:none}
+/* z-index 0 rather than -1: a fixed layer at -1 gets promoted to its own
+   composited layer on scroll and can end up painting over the content. */
+.bg-layers{position:fixed;inset:0;z-index:0;pointer-events:none}
+#root{position:relative;z-index:1}
 .bg-base{position:absolute;inset:0;background:var(--theme-bg);
   transition:background .9s var(--ease-editorial)}
 .bg-grain{position:absolute;inset:0;opacity:var(--theme-grain,.06);
@@ -81,7 +84,7 @@ a{color:inherit;text-decoration:none}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .rule{height:var(--rule);background:var(--line);width:100%}
 
-.rise{animation:rise .9s var(--ease-reveal) backwards}
+:root[data-anim] .rise{animation:rise .9s var(--ease-reveal) backwards}
 @keyframes rise{from{opacity:0;transform:translateY(calc(var(--vu) * 1.4))}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -91,5 +94,6 @@ a{color:inherit;text-decoration:none}
 /* deterministic render mode for screenshots and visual regression */
 :root[data-still] *,:root[data-still] *::before,:root[data-still] *::after{
   animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+:root[data-still]{scroll-behavior:auto}
 :root[data-still] .bg-grain{opacity:var(--theme-grain,.06)!important}
 :root[data-still] .vl{opacity:1!important}

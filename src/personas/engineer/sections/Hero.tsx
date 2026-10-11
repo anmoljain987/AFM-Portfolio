@@ -4,10 +4,23 @@ import SplitText from '../../../shared/components/SplitText'
 const MARQUEE = ['meta', 'google', 'tiktok', 'snapchat', 'newsbreak', 'openai ads',
   'smartnews', 'mediago', 'bigo', 'shopify', 'voluum', 'redtrack', 'clickflare']
 
+const FIGURES = [
+  { n: '600B', u: 'rows / month' },
+  { n: '113–216', u: 'ms p95' },
+  { n: '~40 / 95', u: 'services owned' },
+  { n: '1,700', u: 'runs / day' },
+]
+
 export default function Hero() {
   const loop = [...MARQUEE, ...MARQUEE]
   return (
     <header className="big-hero">
+      <ul className="big-side">
+        {FIGURES.map(f => (
+          <li key={f.u}><span className="n">{f.n}</span><span className="u">{f.u}</span></li>
+        ))}
+      </ul>
+
       <h1 className="big-type">
         <span className="ln"><SplitText text={HERO.line1} delay={0.04} /></span>
         <span className="ln ind"><SplitText text={HERO.line2} delay={0.12} /></span>

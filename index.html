@@ -17,7 +17,12 @@
         var d = document.documentElement
         d.dataset.persona = location.pathname.replace(/\/+$/, '').endsWith('/dj') ? 'dj' : 'engineer'
         d.dataset.theme = d.dataset.persona === 'dj' ? 'night' : 'bone'
-        if (location.search.indexOf('still') > -1) { d.dataset.still = '1'; d.dataset.loaded = '1' }
+        var q = new URLSearchParams(location.search)
+        if (q.has('still')) {
+          // deterministic render mode: no motion, theme pinned, scrolled where asked
+          d.dataset.still = '1'; d.dataset.loaded = '1'
+          if (q.get('theme')) d.dataset.theme = q.get('theme')
+        }
       })()
     </script>
     <style>
@@ -52,7 +57,15 @@
         window.__bootDone = function () {
           clearInterval(t)
           if (el) el.textContent = '100 %'
-          setTimeout(function () { document.documentElement.dataset.loaded = '1' }, 180)
+          setTimeout(function () {
+            document.documentElement.dataset.loaded = '1'
+            // the wipe is decoration; the curtain leaves the DOM either way, so a
+            // stalled transition can never leave someone staring at a blank screen
+            setTimeout(function () {
+              var b = document.getElementById('boot')
+              if (b && b.parentNode) b.parentNode.removeChild(b)
+            }, 1100)
+          }, 180)
         }
         setTimeout(function () { window.__bootDone && window.__bootDone() }, 4500)
       })()

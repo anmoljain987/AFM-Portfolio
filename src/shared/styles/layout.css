@@ -11,19 +11,30 @@
 /* ───── fixed rail: identity left, state right ───── */
 .rail{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;
   align-items:center;justify-content:space-between;gap:16px;
-  padding:calc(var(--vu) * 1.5) var(--gut);
-  mix-blend-mode:difference;color:#F2EEE7}
-.rail-id{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+  padding:calc(var(--vu) * 1.5) var(--gut);color:var(--theme-fg);
+  transition:color .9s var(--ease-editorial),transform .45s var(--ease-ui),opacity .3s var(--ease-ui)}
+/* nothing sits behind the rail, so it steps out of the way on the way down */
+:root[data-rail="hidden"] .rail{transform:translateY(-120%);opacity:0}
+:root[data-only] .rail{display:none}
+.rail-id{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(.95rem,calc(1.4 * var(--vu)),1.4rem);letter-spacing:-.005em;
+  text-transform:uppercase;line-height:1}
 .rail-r{display:flex;align-items:center;gap:14px}
 .rail-now{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
 .rail-btn{background:none;border:1px solid currentColor;color:inherit;cursor:pointer;
   border-radius:999px;padding:7px 15px;font-family:var(--mono);font-size:9.5px;
   letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--ease-ui)}
-.rail-btn:hover{background:currentColor;color:#000;mix-blend-mode:normal}
+.rail-btn:hover{background:var(--theme-fg);color:var(--theme-bg);border-color:var(--theme-fg)}
+.clock{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim)}
 @media (max-width:680px){.rail-now{display:none}}
+
+/* a themed band; the inner section keeps its own padding */
+.band{position:relative}
 
 /* ───── sections ───── */
 section{padding:calc(var(--vu) * 9) 0;position:relative}
+.band:first-child > section,main > .band:first-child > section{padding-top:calc(var(--vu) * 11)}
 .shead{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;
   gap:calc(var(--vu) * 1.2);border-top:var(--rule) solid var(--line);
   padding-top:calc(var(--vu) * .9);margin-bottom:calc(var(--vu) * 3.4)}
@@ -39,21 +50,34 @@ section{padding:calc(var(--vu) * 9) 0;position:relative}
 .split{display:inline}
 .split-w{display:inline-block;white-space:nowrap}
 .split-w:not(:last-child)::after{content:" ";display:inline-block;width:.24em}
-.split-c{display:inline-block;animation:chIn .72s var(--ease-reveal) backwards}
+/* `backwards` parks every character at opacity 0 before its delay elapses, so
+   the reveal only arms once JS has confirmed it is running. No JS, no hiding. */
+.split-c{display:inline-block}
+:root[data-anim] .split-c{animation:chIn .72s var(--ease-reveal) backwards}
 @keyframes chIn{from{opacity:0;transform:translateY(.42em)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.split-c{animation:none}}
 
 /* ───── hero: type at viewport scale, flush to the rails ───── */
 .big-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
-  justify-content:flex-end;padding-top:calc(var(--vu) * 9);overflow:hidden}
+  justify-content:flex-end;padding-top:min(calc(var(--vu) * 9),12svh);overflow:hidden}
 .big-type{display:flex;flex-direction:column;padding:0 var(--gut);
   margin-bottom:calc(var(--vu) * 2.4)}
 .big-type .ln{font-family:var(--display);font-variation-settings:var(--fvs-display);
-  font-weight:700;font-size:clamp(2.6rem,calc(14.4 * var(--vu)),14rem);
+  font-weight:700;font-size:clamp(2.2rem,min(calc(14.4 * var(--vu)),15svh),14rem);
   line-height:.83;letter-spacing:-.012em;text-transform:uppercase;display:block;
   padding-right:.03em}
 .big-type .ind{padding-left:calc(14 * var(--vu))}
 .big-type .sig{color:var(--signal)}
+.big-side{position:absolute;right:var(--gut);top:calc(var(--vu) * 9);
+  display:flex;flex-direction:column;gap:calc(var(--vu) * 1.5);text-align:right;
+  border-right:2px solid var(--signal);padding-right:calc(var(--vu) * 1.1)}
+.big-side li{list-style:none}
+.big-side .n{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(1.1rem,calc(2.1 * var(--vu)),2.2rem);line-height:1;letter-spacing:-.01em;display:block}
+.big-side .u{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);display:block;margin-top:4px}
+@media (max-width:1100px){.big-side{display:none}}
+
 .big-bottom{display:grid;grid-template-columns:1fr auto;align-items:end;
   gap:calc(var(--vu) * 2);padding:0 var(--gut) calc(var(--vu) * 2)}
 .big-bottom .sub{color:var(--muted);font-size:clamp(13px,calc(1.05 * var(--vu)),17px);

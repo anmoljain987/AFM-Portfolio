@@ -7,7 +7,7 @@ export type Theme = 'bone' | 'ink' | 'clay' | 'signal' | 'night' | 'smoke' | 'ac
  * root takes on its theme, so the whole page — background, grain, type, rules —
  * crossfades instead of each section painting its own box.
  */
-export default function Themed({ theme, children, className = '', id, as: As = 'section' }: {
+export default function Themed({ theme, children, className = '', id, as: As = 'div' }: {
   theme: Theme
   children: ReactNode
   className?: string
@@ -18,7 +18,8 @@ export default function Themed({ theme, children, className = '', id, as: As = '
 
   useEffect(() => {
     const el = ref.current
-    if (!el || typeof IntersectionObserver === 'undefined') return
+    // still mode pins the theme from the query string so shots are reproducible
+    if (!el || document.documentElement.dataset.still || typeof IntersectionObserver === 'undefined') return
     const io = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) document.documentElement.dataset.theme = theme },
       // fires as the block crosses the horizontal midline of the viewport
@@ -28,5 +29,5 @@ export default function Themed({ theme, children, className = '', id, as: As = '
     return () => io.disconnect()
   }, [theme])
 
-  return <As ref={ref as never} className={className} id={id} data-theme-block={theme}>{children}</As>
+  return <As ref={ref as never} className={`band ${className}`.trim()} id={id} data-theme-block={theme}>{children}</As>
 }
