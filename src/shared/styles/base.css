@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════════════════
+   Foundation. Every size on this site derives from --vu, the
+   hundredth of the content column, so the page composes the same
+   at 1280 and at 2560 instead of just getting bigger.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --display:Saira,"Helvetica Neue",Arial,sans-serif;
+  --body:Saira,system-ui,-apple-system,sans-serif;
+  --mono:"Martian Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --content-max:1728px;
+  --page-w:min(100vw,var(--content-max));
+  --page-x:max(0px,calc((100vw - var(--content-max)) / 2));
+  --vu:calc(var(--page-w) / 100);
+  --gut:calc(var(--page-x) + clamp(20px,4.2vw,72px));
+  --rule:1px;
+
+  --ease-editorial:cubic-bezier(.65,.05,.36,1);
+  --ease-reveal:cubic-bezier(.16,1,.3,1);
+  --ease-ui:cubic-bezier(.4,0,.2,1);
+
+  /* the display recipe, in one place */
+  --fvs-display:"wdth" 50,"wght" 700;
+  --fvs-sub:"wdth" 68,"wght" 600;
+}
+
+/* ───── engineer palette: ink, bone, clay, signal red ───── */
+:root[data-persona="engineer"]{
+  --c-bone:#F2EEE7; --c-paper:#EBE6DC; --c-clay:#D7CFC0; --c-ink:#16130F;
+  --c-smoke:#211D18; --c-signal:#D93A1E; --c-deep:#9E2A13; --c-taupe:#8A8276;
+}
+:root[data-persona="engineer"][data-theme="bone"]{--theme-bg:var(--c-bone);--theme-fg:var(--c-ink);--theme-surface:#E4DED2;--theme-accent:var(--c-signal);--theme-grain:.055}
+:root[data-persona="engineer"][data-theme="ink"]{--theme-bg:var(--c-ink);--theme-fg:var(--c-bone);--theme-surface:var(--c-smoke);--theme-accent:#F2552E;--theme-grain:.085}
+:root[data-persona="engineer"][data-theme="clay"]{--theme-bg:var(--c-clay);--theme-fg:var(--c-ink);--theme-surface:#C8BFAD;--theme-accent:var(--c-deep);--theme-grain:.06}
+:root[data-persona="engineer"][data-theme="signal"]{--theme-bg:var(--c-signal);--theme-fg:var(--c-bone);--theme-surface:var(--c-deep);--theme-accent:var(--c-ink);--theme-grain:.1}
+
+/* ───── dj palette: night, smoke, acid ───── */
+:root[data-persona="dj"]{
+  --c-bone:#F4F2EE; --c-paper:#16161A; --c-clay:#1E1E24; --c-ink:#09090B;
+  --c-smoke:#101014; --c-signal:#D8FF3E; --c-deep:#A8CC22; --c-taupe:#6E6A62;
+}
+:root[data-persona="dj"][data-theme="night"]{--theme-bg:#09090B;--theme-fg:#F4F2EE;--theme-surface:#15151A;--theme-accent:#D8FF3E;--theme-grain:.09}
+:root[data-persona="dj"][data-theme="smoke"]{--theme-bg:#15151A;--theme-fg:#F4F2EE;--theme-surface:#1F1F26;--theme-accent:#D8FF3E;--theme-grain:.1}
+:root[data-persona="dj"][data-theme="acid"]{--theme-bg:#D8FF3E;--theme-fg:#09090B;--theme-surface:#C2E635;--theme-accent:#09090B;--theme-grain:.12}
+:root[data-persona="dj"][data-theme="bone"]{--theme-bg:#F4F2EE;--theme-fg:#09090B;--theme-surface:#E4E1DA;--theme-accent:#09090B;--theme-grain:.06}
+
+/* derived roles so components never reach for a raw colour */
+:root{
+  --bg:var(--theme-bg); --ink:var(--theme-fg); --signal:var(--theme-accent);
+  --muted:color-mix(in oklab,var(--theme-fg) 62%,var(--theme-bg));
+  --dim:color-mix(in oklab,var(--theme-fg) 42%,var(--theme-bg));
+  --line:color-mix(in oklab,var(--theme-fg) 16%,var(--theme-bg));
+  --line2:color-mix(in oklab,var(--theme-fg) 30%,var(--theme-bg));
+  --raise:var(--theme-surface);
+  --viz-line:color-mix(in oklab,var(--theme-fg) 55%,var(--theme-bg));
+  --viz-dot:var(--theme-fg); --viz-flow:var(--theme-accent);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--theme-bg)}
+body{color:var(--theme-fg);font-family:var(--body);font-size:16px;line-height:1.55;
+  font-variation-settings:"wdth" 100,"wght" 400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:color .9s var(--ease-editorial)}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--theme-accent);color:var(--theme-bg)}
+:focus-visible{outline:2px solid var(--theme-accent);outline-offset:3px}
+
+/* ───── the layered backdrop: flat theme colour + a grain that
+   never scrolls, so the page reads as printed rather than drawn ───── */
+.bg-layers{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.bg-base{position:absolute;inset:0;background:var(--theme-bg);
+  transition:background .9s var(--ease-editorial)}
+.bg-grain{position:absolute;inset:0;opacity:var(--theme-grain,.06);
+  transition:opacity .9s var(--ease-editorial);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px 240px}
+
+.shell{padding:0 var(--gut)}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.rule{height:var(--rule);background:var(--line);width:100%}
+
+.rise{animation:rise .9s var(--ease-reveal) backwards}
+@keyframes rise{from{opacity:0;transform:translateY(calc(var(--vu) * 1.4))}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* deterministic render mode for screenshots and visual regression */
+:root[data-still] *,:root[data-still] *::before,:root[data-still] *::after{
+  animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+:root[data-still] .bg-grain{opacity:var(--theme-grain,.06)!important}
+:root[data-still] .vl{opacity:1!important}

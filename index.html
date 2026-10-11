@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anmol Jain — Platform Engineer</title>
+    <meta name="description" content="I own the layer where fifteen data sources become one. 600 billion rows a month on ClickHouse at sub-250ms p95." />
+    <meta property="og:title" content="Anmol Jain — Platform Engineer" />
+    <meta property="og:description" content="Fifteen data sources. One schema. 600 billion rows a month at sub-250ms p95." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#16130F" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        var d = document.documentElement
+        d.dataset.persona = location.pathname.replace(/\/+$/, '').endsWith('/dj') ? 'dj' : 'engineer'
+        d.dataset.theme = d.dataset.persona === 'dj' ? 'night' : 'bone'
+        if (location.search.indexOf('still') > -1) { d.dataset.still = '1'; d.dataset.loaded = '1' }
+      })()
+    </script>
+    <style>
+      /* critical: the backdrop and the loader paint before any module arrives */
+      #boot{position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;
+        align-items:center;justify-content:center;gap:18px;background:#16130F;color:#F2EEE7;
+        transition:clip-path .9s cubic-bezier(.65,.05,.36,1);
+        clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+      :root[data-persona="dj"] #boot{background:#09090B;color:#F4F2EE}
+      :root[data-loaded] #boot{clip-path:polygon(0 0,100% 0,100% 0,0 0);pointer-events:none}
+      #boot-mark{font-family:Saira,system-ui,sans-serif;font-variation-settings:"wdth" 50,"wght" 700;
+        font-size:clamp(3rem,11vw,9rem);line-height:.8;letter-spacing:-.01em;text-transform:uppercase}
+      #boot-pct{font-family:"Martian Mono",ui-monospace,monospace;font-size:10px;
+        letter-spacing:.2em;opacity:.5;font-variant-numeric:tabular-nums}
+      :root[data-still] #boot{display:none}
+    </style>
+  </head>
+  <body>
+    <div class="bg-layers" aria-hidden="true"><div class="bg-base"></div><div class="bg-grain"></div></div>
+    <div id="root"></div>
+    <div id="boot" aria-hidden="true">
+      <span id="boot-mark">AJ</span>
+      <span id="boot-pct">0 %</span>
+    </div>
+    <script>
+      (function () {
+        var el = document.getElementById('boot-pct'), n = 0
+        var t = setInterval(function () {
+          n = Math.min(96, n + Math.random() * 11)
+          if (el) el.textContent = Math.floor(n) + ' %'
+        }, 90)
+        window.__bootDone = function () {
+          clearInterval(t)
+          if (el) el.textContent = '100 %'
+          setTimeout(function () { document.documentElement.dataset.loaded = '1' }, 180)
+        }
+        setTimeout(function () { window.__bootDone && window.__bootDone() }, 4500)
+      })()
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
