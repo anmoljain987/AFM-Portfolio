@@ -34,3 +34,52 @@
   font-size:clamp(1.6rem,calc(4.2 * var(--vu)),4.4rem);letter-spacing:-.015em;
   text-transform:uppercase;line-height:.88;margin-bottom:var(--s3)}
 .dj-cross p{color:var(--muted);font-size:var(--t-body);line-height:1.68}
+
+/* ───── the sound ───── */
+.dj-sound{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:var(--s6);align-items:start}
+.dj-statement{font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 600;
+  font-size:clamp(1.4rem,calc(3.1 * var(--vu)),3.1rem);line-height:1.04;
+  letter-spacing:-.015em;max-width:22ch}
+.dj-genres{list-style:none;display:flex;flex-direction:column;gap:var(--s2);
+  border-left:2px solid var(--signal);padding-left:var(--s3)}
+.dj-genres li{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.dj-sound{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* ───── rooms played ───── */
+.dj-rooms{border-top:var(--rule) solid var(--line)}
+.dj-room{display:grid;grid-template-columns:minmax(0,1fr) var(--col-label) var(--col-label);
+  gap:var(--s4);align-items:baseline;padding:var(--s4) 0;
+  border-bottom:var(--rule) solid var(--line)}
+.dj-room .v{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(1.1rem,calc(1.9 * var(--vu)),1.9rem);text-transform:uppercase;letter-spacing:-.01em}
+.dj-room .c{font-size:var(--t-body);color:var(--muted)}
+.dj-room .w{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);text-align:right}
+@media (max-width:860px){.dj-room{grid-template-columns:1fr;gap:var(--s1)}.dj-room .w{text-align:left}}
+
+/* ───── mixes ───── */
+.dj-mixes{border-top:var(--rule) solid var(--line)}
+.dj-mix{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:var(--s4);
+  align-items:baseline;padding:var(--s4) 0;border-bottom:var(--rule) solid var(--line);
+  transition:background var(--d-hover) ease}
+.dj-mix .t{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(1.1rem,calc(1.9 * var(--vu)),1.9rem);text-transform:uppercase;letter-spacing:-.01em}
+.dj-mix .p{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim)}
+.dj-mix .go{color:var(--signal);transition:transform var(--d-ui) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .dj-mix:hover{background:var(--raise)}
+  .dj-mix:hover .go{transform:translate(3px,-3px)}
+}
+
+/* ───── booking ───── */
+.dj-booking{border-top:2px solid var(--signal);padding-top:var(--s8);padding-bottom:var(--s7)}
+.dj-booking h2{font-family:var(--display);font-variation-settings:"wdth" 55,"wght" 700;
+  font-size:clamp(2rem,calc(6.2 * var(--vu)),6.6rem);letter-spacing:-.018em;
+  line-height:.86;text-transform:uppercase}
+.dj-lk{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;
+  border:var(--rule) solid var(--line2);padding:var(--s2) var(--s3);color:var(--muted);border-radius:2px}
+@media (hover:hover) and (pointer:fine){
+  .dj-lk:hover{border-color:var(--signal);color:var(--signal)}
+}

@@ -1,12 +1,33 @@
+export const LINKS = {
+  instagram: 'https://instagram.com/afm.live',
+  handle: '@afm.live',
+  site: 'https://afm.live',
+}
+
 export const DJ = {
-  alias: 'AFM',
-  tag: 'DJ · builder of the tools I use',
+  alias: 'A.FM',
+  say: 'pronounced "A F M"',
+  tag: 'DJ · Professional Song Finder',
+  city: 'Chandigarh',
   line1: 'I play',
   line2: 'the records',
   line3: 'and I write',
   line4: 'the software.',
   sub: 'I play, and I write the software I play with. AFM started because no tool did what I actually needed between a messy library and a clean set.',
 }
+
+/** Straight off the A.FM bio. The song-finder line is the spine of this page:
+ *  it is what he does on the decks and what afm.live does on disk. */
+export const SOUND = {
+  genres: ['House', 'Tech', 'Whatever slaps'],
+  body: 'House and tech, and anything that slaps. The job is the same either way: find the record nobody else is playing, then put it somewhere it lands.',
+}
+
+/** Rooms played. Empty until confirmed — the section hides itself. */
+export const PLAYED: { venue: string; city: string; when: string }[] = []
+
+/** Mixes to listen to. Empty until links arrive — the section hides itself. */
+export const MIXES: { title: string; platform: string; url: string; when?: string }[] = []
 
 /** afm.live — the product, described from what it really does. */
 export const AFM = {

@@ -2,10 +2,10 @@ import Reveal from '../../../shared/components/Reveal'
 import SectionHead from '../../../shared/components/SectionHead'
 import { AFM } from '../content'
 
-export default function Afm() {
+export default function Afm({ n }: { n: string }) {
   return (
     <section className="shell" id="afm">
-      <Reveal><SectionHead n="01" title="The tool I built for it" note="open source" /></Reveal>
+      <Reveal><SectionHead n={n} title="And I built the tool" note="afm.live" /></Reveal>
       <Reveal d={0.04}>
         <div className="afm-head">
           <span className="nm">{AFM.name}</span>
