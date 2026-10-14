@@ -7,7 +7,7 @@ export default function SplitText({ text, delay = 0, className = '' }:
       {text.split(' ').map((word, w) => (
         <span className="split-w" key={w} aria-hidden="true">
           {word.split('').map((ch, c) => {
-            const d = delay + i++ * 0.022
+            const d = delay + i++ * 0.012
             return <span className="split-c" key={c} style={{ animationDelay: `${d}s` }}>{ch}</span>
           })}
         </span>

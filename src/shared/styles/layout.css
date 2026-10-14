@@ -8,7 +8,7 @@
 .rail{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;
   align-items:center;justify-content:space-between;gap:var(--s3);
   padding:var(--s4) var(--gut);color:var(--theme-fg);
-  transition:color .9s var(--ease-editorial),transform .45s var(--ease-ui),opacity .3s var(--ease-ui)}
+  transition:color var(--d-theme) var(--ease-editorial),transform var(--d-ui) var(--ease-out),opacity var(--d-hover) var(--ease-out)}
 /* nothing sits behind the rail, so it steps out of the way on the way down */
 :root[data-rail="hidden"] .rail{transform:translateY(-120%);opacity:0}
 :root[data-only] .rail{display:none}
@@ -20,7 +20,9 @@
 .rail-btn{background:none;border:1px solid currentColor;color:inherit;cursor:pointer;
   border-radius:999px;padding:var(--s2) var(--s3);font-family:var(--mono);font-size:var(--t-micro);
   letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--ease-ui)}
-.rail-btn:hover{background:var(--theme-fg);color:var(--theme-bg);border-color:var(--theme-fg)}
+@media (hover:hover) and (pointer:fine){
+  .rail-btn:hover{background:var(--theme-fg);color:var(--theme-bg);border-color:var(--theme-fg)}
+}
 .clock{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim)}
 @media (max-width:680px){.rail-now{display:none}}
@@ -49,8 +51,8 @@ section{padding:var(--s8) 0;position:relative}
 /* `backwards` parks every character at opacity 0 before its delay elapses, so
    the reveal only arms once JS has confirmed it is running. No JS, no hiding. */
 .split-c{display:inline-block}
-:root[data-anim] .split-c{animation:chIn .72s var(--ease-reveal) backwards}
-@keyframes chIn{from{opacity:0;transform:translateY(.42em)}to{opacity:1;transform:none}}
+:root[data-anim] .split-c{animation:chIn var(--d-reveal) var(--ease-out) backwards}
+@keyframes chIn{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.split-c{animation:none}}
 
 /* ───── hero: type at viewport scale, flush to the rails ───── */
@@ -101,3 +103,23 @@ section{padding:var(--s8) 0;position:relative}
 .wordbreak .cap{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.2em;
   text-transform:uppercase;opacity:.6;margin-top:var(--s5);max-width:46ch;
   line-height:2}
+
+/* ───── persona wipe ─────
+   A slab in the incoming persona's colours covers the swap. Transform only,
+   so it composites on the GPU; translate percentages are relative to the
+   slab's own height, so it works at any viewport size. */
+.wipe{position:fixed;inset:0;z-index:90;pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:var(--s2);transform:translateY(100%);
+  transition:transform var(--d-panel) var(--ease-in-out)}
+.wipe[data-to="engineer"]{background:#16130F;color:#F2EEE7}
+.wipe[data-to="dj"]{background:#D8FF3E;color:#09090B}
+.wipe-name{font-family:var(--display);font-variation-settings:"wdth" 50,"wght" 700;
+  font-size:clamp(2.6rem,calc(11 * var(--vu)),9rem);line-height:.82;
+  letter-spacing:-.01em;text-transform:uppercase}
+.wipe-role{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6}
+:root[data-wipe="in"] .wipe{transform:translateY(0)}
+:root[data-wipe="out"] .wipe{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.wipe{display:none}}
+:root[data-still] .wipe{display:none}

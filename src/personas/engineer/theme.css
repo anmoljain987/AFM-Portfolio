@@ -10,7 +10,15 @@
 .eng-metrics,.eng-work,.eng-path{border-top:var(--rule) solid var(--line)}
 .eng-m,.eng-w,.eng-p{display:grid;gap:var(--s4);padding:var(--s4) 0;
   border-bottom:var(--rule) solid var(--line);transition:background .2s}
-.eng-m:hover,.eng-w:hover{background:var(--raise)}
+/* hover is a pointer affordance; on touch it fires on tap and sticks */
+@media (hover:hover) and (pointer:fine){
+  .eng-m:hover,.eng-w:hover{background:var(--raise)}
+  .eng-m:hover::before,.eng-w:hover::before{transform:scaleY(1)}
+}
+.eng-m,.eng-w{position:relative}
+.eng-m::before,.eng-w::before{content:"";position:absolute;left:calc(var(--s3) * -1);
+  top:0;bottom:0;width:2px;background:var(--signal);transform:scaleY(0);transform-origin:top;
+  transition:transform var(--d-ui) var(--ease-out)}
 
 /* metrics */
 .eng-m{grid-template-columns:var(--col-label) minmax(0,2fr) minmax(0,1.4fr);align-items:baseline}
@@ -57,9 +65,10 @@
   line-height:.86;text-transform:uppercase}
 .eng-links{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
 .eng-lk{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.1em;text-transform:uppercase;
-  border:var(--rule) solid var(--line2);padding:var(--s2) var(--s3);color:var(--muted);
-  transition:.22s;border-radius:2px}
-.eng-lk:hover{border-color:var(--signal);color:var(--signal)}
+  border:var(--rule) solid var(--line2);padding:var(--s2) var(--s3);color:var(--muted);border-radius:2px}
+@media (hover:hover) and (pointer:fine){
+  .eng-lk:hover{border-color:var(--signal);color:var(--signal)}
+}
 .eng-foot{color:var(--dim);font-family:var(--mono);font-size:var(--t-micro);margin-top:var(--s7);
   border-top:var(--rule) solid var(--line);padding-top:var(--s3);line-height:1.9;letter-spacing:.04em}
 

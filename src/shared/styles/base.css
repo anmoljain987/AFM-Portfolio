@@ -36,9 +36,21 @@
   /* shared label column so the metric and timeline tables line up */
   --col-label:clamp(104px,11vw,160px);
 
+  /* strong curves — the built-in CSS easings are too weak to read as intent */
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.77,0,.175,1);
   --ease-editorial:cubic-bezier(.65,.05,.36,1);
   --ease-reveal:cubic-bezier(.16,1,.3,1);
   --ease-ui:cubic-bezier(.4,0,.2,1);
+
+  /* durations: UI stays under 300ms. Only the full-bleed theme crossfade,
+     which is explanatory rather than interactive, runs long. */
+  --d-press:160ms;
+  --d-hover:200ms;
+  --d-ui:220ms;
+  --d-panel:420ms;
+  --d-reveal:460ms;
+  --d-theme:900ms;
 
   /* the display recipe, in one place */
   --fvs-display:"wdth" 50,"wght" 700;
@@ -82,7 +94,7 @@ html{scroll-behavior:smooth;background:var(--theme-bg)}
 body{color:var(--theme-fg);font-family:var(--body);font-size:16px;line-height:1.55;
   font-variation-settings:"wdth" 100,"wght" 400;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  transition:color .9s var(--ease-editorial)}
+  transition:color var(--d-theme) var(--ease-editorial)}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--theme-accent);color:var(--theme-bg)}
 :focus-visible{outline:2px solid var(--theme-accent);outline-offset:3px}
@@ -94,9 +106,9 @@ a{color:inherit;text-decoration:none}
 .bg-layers{position:fixed;inset:0;z-index:0;pointer-events:none}
 #root{position:relative;z-index:1}
 .bg-base{position:absolute;inset:0;background:var(--theme-bg);
-  transition:background .9s var(--ease-editorial)}
+  transition:background var(--d-theme) var(--ease-editorial)}
 .bg-grain{position:absolute;inset:0;opacity:var(--theme-grain,.06);
-  transition:opacity .9s var(--ease-editorial);
+  transition:opacity var(--d-theme) var(--ease-editorial);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:240px 240px}
 
@@ -105,8 +117,8 @@ a{color:inherit;text-decoration:none}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .rule{height:var(--rule);background:var(--line);width:100%}
 
-:root[data-anim] .rise{animation:rise .9s var(--ease-reveal) backwards}
-@keyframes rise{from{opacity:0;transform:translateY(calc(var(--vu) * 1.4))}to{opacity:1;transform:none}}
+:root[data-anim] .rise{animation:rise var(--d-reveal) var(--ease-out) backwards}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -118,3 +130,14 @@ a{color:inherit;text-decoration:none}
 :root[data-still]{scroll-behavior:auto}
 :root[data-still] .bg-grain{opacity:var(--theme-grain,.06)!important}
 :root[data-still] .vl{opacity:1!important}
+
+/* ───── pressable affordance ─────
+   Anything you can press dips slightly. Nothing in the real world responds
+   to a press by doing nothing. Gated on a real pointer so a tap on touch
+   does not leave the element stuck in its hover state. */
+.rail-btn,.eng-lk,.dj-lk{transition:transform var(--d-press) var(--ease-out),
+  border-color var(--d-hover) ease,color var(--d-hover) ease,background var(--d-hover) ease}
+.rail-btn:active,.eng-lk:active,.dj-lk:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){
+  .rail-btn:active,.eng-lk:active,.dj-lk:active{transform:none}
+}

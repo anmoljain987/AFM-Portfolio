@@ -3,11 +3,12 @@ import Lenis from 'lenis'
 import { usePersona } from './shared/hooks/usePersona'
 import { useRailHide } from './shared/hooks/useRailHide'
 import PersonaSwitch from './shared/components/PersonaSwitch'
+import Wipe from './shared/components/Wipe'
 import Engineer from './personas/engineer'
 import Dj from './personas/dj'
 
 export default function App() {
-  const { persona, other, go } = usePersona()
+  const { persona, other, go, wiping } = usePersona()
   useRailHide()
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <>
       <PersonaSwitch persona={persona} other={other} go={go} />
+      <Wipe to={wiping} />
       {persona === 'dj' ? <Dj /> : <Engineer />}
     </>
   )

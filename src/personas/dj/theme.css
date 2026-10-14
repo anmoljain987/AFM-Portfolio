@@ -16,8 +16,11 @@
    leaves a block of container colour hanging off the end */
 .afm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
   grid-auto-rows:1fr;gap:var(--s3);margin-top:var(--s5)}
-.afm-f{border:var(--rule) solid var(--line2);padding:var(--s4);transition:background .25s}
-.afm-f:hover{background:var(--raise)}
+.afm-f{border:var(--rule) solid var(--line2);padding:var(--s4);
+  transition:background var(--d-hover) ease,border-color var(--d-hover) ease}
+@media (hover:hover) and (pointer:fine){
+  .afm-f:hover{background:var(--raise);border-color:var(--signal)}
+}
 .afm-f h4{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
   font-size:clamp(1rem,calc(1.45 * var(--vu)),1.45rem);margin-bottom:var(--s2);
   letter-spacing:-.01em;text-transform:uppercase}

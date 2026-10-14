@@ -4,3 +4,6 @@ dist
 .DS_Store
 .shots
 tsconfig.tsbuildinfo
+.agents
+.claude
+skills-lock.json
