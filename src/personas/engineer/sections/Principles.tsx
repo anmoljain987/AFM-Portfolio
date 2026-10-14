@@ -5,7 +5,7 @@ import { PRINCIPLES } from '../content'
 export default function Principles() {
   return (
     <section className="shell" id="how">
-      <Reveal><SectionHead n="03" title="How I work" /></Reveal>
+      <Reveal><SectionHead n="04" title="How I work" /></Reveal>
       <div className="eng-prin">
         {PRINCIPLES.map((p, i) => (
           <Reveal key={p.t} d={i * 0.04}>

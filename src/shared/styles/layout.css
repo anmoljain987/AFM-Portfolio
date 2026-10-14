@@ -3,15 +3,11 @@
    --vu. Sections carry their own theme and hand it to the root.
    ═══════════════════════════════════════════════════════════════ */
 
-/* the single display recipe */
-.disp{font-family:var(--display);font-variation-settings:var(--fvs-display);
-  font-weight:700;letter-spacing:-.01em;text-transform:uppercase;line-height:.83;
-  padding-right:.03em}
 
 /* ───── fixed rail: identity left, state right ───── */
 .rail{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;
-  align-items:center;justify-content:space-between;gap:16px;
-  padding:calc(var(--vu) * 1.5) var(--gut);color:var(--theme-fg);
+  align-items:center;justify-content:space-between;gap:var(--s3);
+  padding:var(--s4) var(--gut);color:var(--theme-fg);
   transition:color .9s var(--ease-editorial),transform .45s var(--ease-ui),opacity .3s var(--ease-ui)}
 /* nothing sits behind the rail, so it steps out of the way on the way down */
 :root[data-rail="hidden"] .rail{transform:translateY(-120%);opacity:0}
@@ -19,13 +15,13 @@
 .rail-id{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
   font-size:clamp(.95rem,calc(1.4 * var(--vu)),1.4rem);letter-spacing:-.005em;
   text-transform:uppercase;line-height:1}
-.rail-r{display:flex;align-items:center;gap:14px}
-.rail-now{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
+.rail-r{display:flex;align-items:center;gap:var(--s3)}
+.rail-now{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;opacity:.55}
 .rail-btn{background:none;border:1px solid currentColor;color:inherit;cursor:pointer;
-  border-radius:999px;padding:7px 15px;font-family:var(--mono);font-size:9.5px;
+  border-radius:999px;padding:var(--s2) var(--s3);font-family:var(--mono);font-size:var(--t-micro);
   letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--ease-ui)}
 .rail-btn:hover{background:var(--theme-fg);color:var(--theme-bg);border-color:var(--theme-fg)}
-.clock{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+.clock{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim)}
 @media (max-width:680px){.rail-now{display:none}}
 
@@ -33,16 +29,16 @@
 .band{position:relative}
 
 /* ───── sections ───── */
-section{padding:calc(var(--vu) * 9) 0;position:relative}
-.band:first-child > section,main > .band:first-child > section{padding-top:calc(var(--vu) * 11)}
+section{padding:var(--s8) 0;position:relative}
+.band:first-child > section,main > .band:first-child > section{padding-top:calc(var(--s8) + var(--s5))}
 .shead{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;
-  gap:calc(var(--vu) * 1.2);border-top:var(--rule) solid var(--line);
-  padding-top:calc(var(--vu) * .9);margin-bottom:calc(var(--vu) * 3.4)}
-.shead-n{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.2em}
+  gap:var(--s3);border-top:var(--rule) solid var(--line);
+  padding-top:var(--s3);margin-bottom:var(--s6)}
+.shead-n{font-family:var(--mono);font-size:var(--t-label);color:var(--dim);letter-spacing:.2em}
 .shead h2{font-family:var(--display);font-variation-settings:var(--fvs-sub);font-weight:600;
   font-size:clamp(1.5rem,calc(3.2 * var(--vu)),3.4rem);letter-spacing:-.015em;
   line-height:.92;text-transform:uppercase}
-.shead-note{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.1em;
+.shead-note{font-family:var(--mono);font-size:var(--t-micro);color:var(--dim);letter-spacing:.1em;
   justify-self:end;text-align:right}
 @media (max-width:680px){.shead{grid-template-columns:auto 1fr}.shead-note{display:none}}
 
@@ -59,37 +55,37 @@ section{padding:calc(var(--vu) * 9) 0;position:relative}
 
 /* ───── hero: type at viewport scale, flush to the rails ───── */
 .big-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
-  justify-content:flex-end;padding-top:min(calc(var(--vu) * 9),12svh);overflow:hidden}
+  justify-content:flex-end;padding-top:min(var(--s8),12svh);overflow:hidden}
 .big-type{display:flex;flex-direction:column;padding:0 var(--gut);
-  margin-bottom:calc(var(--vu) * 2.4)}
+  margin-bottom:var(--s5)}
 .big-type .ln{font-family:var(--display);font-variation-settings:var(--fvs-display);
   font-weight:700;font-size:clamp(2.2rem,min(calc(14.4 * var(--vu)),15svh),14rem);
   line-height:.83;letter-spacing:-.012em;text-transform:uppercase;display:block;
   padding-right:.03em}
 .big-type .ind{padding-left:calc(14 * var(--vu))}
 .big-type .sig{color:var(--signal)}
-.big-side{position:absolute;right:var(--gut);top:calc(var(--vu) * 9);
-  display:flex;flex-direction:column;gap:calc(var(--vu) * 1.5);text-align:right;
-  border-right:2px solid var(--signal);padding-right:calc(var(--vu) * 1.1)}
+.big-side{position:absolute;right:var(--gut);top:calc(var(--s8) + var(--s4));
+  display:flex;flex-direction:column;gap:var(--s4);text-align:right;
+  border-right:2px solid var(--signal);padding-right:var(--s3)}
 .big-side li{list-style:none}
 .big-side .n{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
   font-size:clamp(1.1rem,calc(2.1 * var(--vu)),2.2rem);line-height:1;letter-spacing:-.01em;display:block}
-.big-side .u{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);display:block;margin-top:4px}
+.big-side .u{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);display:block;margin-top:var(--s1)}
 @media (max-width:1100px){.big-side{display:none}}
 
 .big-bottom{display:grid;grid-template-columns:1fr auto;align-items:end;
-  gap:calc(var(--vu) * 2);padding:0 var(--gut) calc(var(--vu) * 2)}
-.big-bottom .sub{color:var(--muted);font-size:clamp(13px,calc(1.05 * var(--vu)),17px);
+  gap:var(--s5);padding:0 var(--gut) var(--s5)}
+.big-bottom .sub{color:var(--muted);font-size:var(--t-lead);
   max-width:38ch;line-height:1.55}
-.big-scroll{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+.big-scroll{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.2em;
   text-transform:uppercase;color:var(--dim);white-space:nowrap}
 @media (max-width:680px){.big-scroll{display:none}.big-type .ind{padding-left:0}
   .big-bottom{grid-template-columns:1fr}}
 
 /* ───── marquee rule ───── */
 .big-marquee{border-top:var(--rule) solid var(--line);border-bottom:var(--rule) solid var(--line);
-  overflow:hidden;white-space:nowrap;padding:calc(var(--vu) * .7) 0}
+  overflow:hidden;white-space:nowrap;padding:var(--s3) 0}
 .big-marquee span{font-family:var(--display);font-variation-settings:"wdth" 50,"wght" 600;
   font-size:clamp(1.1rem,calc(2.6 * var(--vu)),2.6rem);text-transform:uppercase;
   letter-spacing:-.005em;color:var(--dim);padding-right:.5em;display:inline-block;
@@ -98,18 +94,10 @@ section{padding:calc(var(--vu) * 9) 0;position:relative}
 
 /* ───── the full-bleed word: one statement at 26vu, nothing else ───── */
 .wordbreak{min-height:72svh;display:flex;flex-direction:column;justify-content:center;
-  padding:calc(var(--vu) * 6) var(--gut);overflow:hidden}
+  padding:var(--s7) var(--gut);overflow:hidden}
 .wordbreak .w{font-family:var(--display);font-variation-settings:"wdth" 50,"wght" 700;
   font-size:clamp(4rem,calc(26 * var(--vu)),26rem);line-height:.78;letter-spacing:-.02em;
   text-transform:uppercase;display:block}
-.wordbreak .cap{font-family:var(--mono);font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;opacity:.6;margin-top:calc(var(--vu) * 1.6);max-width:46ch;
+.wordbreak .cap{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6;margin-top:var(--s5);max-width:46ch;
   line-height:2}
-
-/* ───── pull quote ───── */
-.pull{padding:calc(var(--vu) * 7) var(--gut)}
-.pull p{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 600;
-  font-size:clamp(1.8rem,calc(6.4 * var(--vu)),8.5rem);line-height:.94;
-  letter-spacing:-.018em;max-width:18ch}
-.pull .attrib{font-family:var(--mono);font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dim);margin-top:calc(var(--vu) * 1.8)}

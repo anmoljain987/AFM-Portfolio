@@ -1,39 +1,33 @@
-/* DJ — hard cut to black */
-.dj-alias{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--signal);margin-bottom:20px}
+/* DJ — hard cut to black. Same --s1..--s8 scale as the engineer side. */
 
-.dj-marquee{border-top:var(--rule) solid var(--line);border-bottom:var(--rule) solid var(--line);
-  overflow:hidden;white-space:nowrap;padding:14px 0;margin-top:clamp(40px,7vh,80px)}
-.dj-marquee span{font-family:var(--display);font-variation-settings:"wdth" 75;font-weight:800;
-  font-size:clamp(1.4rem,3.6vw,2.6rem);text-transform:uppercase;letter-spacing:-.02em;color:var(--line2);
-  padding-right:42px;display:inline-block;animation:slide 26s linear infinite}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.afm-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.afm-head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s3)}
 .afm-head .nm{font-family:var(--display);font-variation-settings:"wdth" 55,"wght" 700;
   font-size:clamp(2rem,calc(5 * var(--vu)),5rem);letter-spacing:-.015em;
   text-transform:uppercase;line-height:.9}
-.afm-head .kk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
-.afm-blurb{color:var(--muted);font-size:15px;max-width:62ch;line-height:1.65}
-.afm-stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.afm-stack span{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
-  border:var(--rule) solid var(--line2);padding:4px 10px;color:var(--dim);border-radius:2px}
+.afm-head .kk{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--signal)}
+.afm-blurb{color:var(--muted);font-size:var(--t-lead);max-width:62ch;line-height:1.65}
+.afm-stack{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4)}
+.afm-stack span{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;
+  text-transform:uppercase;border:var(--rule) solid var(--line2);
+  padding:var(--s1) var(--s2);color:var(--dim);border-radius:2px}
+
 /* bordered cells rather than a gap-coloured grid: a short row no longer
    leaves a block of container colour hanging off the end */
 .afm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
-  grid-auto-rows:1fr;gap:calc(var(--vu) * .8);margin-top:calc(var(--vu) * 3)}
-.afm-f{border:var(--rule) solid var(--line2);padding:calc(var(--vu) * 1.6) calc(var(--vu) * 1.4);
-  transition:background .25s}
+  grid-auto-rows:1fr;gap:var(--s3);margin-top:var(--s5)}
+.afm-f{border:var(--rule) solid var(--line2);padding:var(--s4);transition:background .25s}
 .afm-f:hover{background:var(--raise)}
 .afm-f h4{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
-  font-size:clamp(1rem,calc(1.45 * var(--vu)),1.45rem);margin-bottom:9px;
+  font-size:clamp(1rem,calc(1.45 * var(--vu)),1.45rem);margin-bottom:var(--s2);
   letter-spacing:-.01em;text-transform:uppercase}
-.afm-f p{color:var(--muted);font-size:13.5px;line-height:1.6}
+.afm-f p{color:var(--muted);font-size:var(--t-body);line-height:1.6}
 
-.dj-empty{border:var(--rule) dashed var(--line2);padding:40px 28px;text-align:center;
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.dj-cross{border-top:2px solid var(--signal);padding-top:26px;max-width:66ch}
+.dj-empty{border:var(--rule) dashed var(--line2);padding:var(--s6) var(--s4);text-align:center;
+  font-family:var(--mono);font-size:var(--t-label);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim)}
+.dj-cross{border-top:2px solid var(--signal);padding-top:var(--s4);max-width:66ch}
 .dj-cross h3{font-family:var(--display);font-variation-settings:"wdth" 55,"wght" 700;
   font-size:clamp(1.6rem,calc(4.2 * var(--vu)),4.4rem);letter-spacing:-.015em;
-  text-transform:uppercase;line-height:.88;margin-bottom:14px}
-.dj-cross p{color:var(--muted);font-size:14.5px;line-height:1.68}
+  text-transform:uppercase;line-height:.88;margin-bottom:var(--s3)}
+.dj-cross p{color:var(--muted);font-size:var(--t-body);line-height:1.68}

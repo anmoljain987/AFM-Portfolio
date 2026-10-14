@@ -5,7 +5,7 @@ import { WORK } from '../content'
 export default function Work() {
   return (
     <section className="shell" id="work">
-      <Reveal><SectionHead n="02" title="Selected work" note={`${WORK.length} entries`} /></Reveal>
+      <Reveal><SectionHead n="03" title="Selected work" note={`${WORK.length} entries`} /></Reveal>
       <div className="eng-work">
         {WORK.map((w, i) => (
           <Reveal key={w.t} d={i * 0.03}>
