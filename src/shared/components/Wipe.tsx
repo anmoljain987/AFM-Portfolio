@@ -1,7 +1,7 @@
 import type { Persona } from '../hooks/usePersona'
 
-const NAME: Record<Persona, string> = { engineer: 'Anmol Jain', dj: 'AFM' }
-const ROLE: Record<Persona, string> = { engineer: 'Platform engineer', dj: 'DJ · afm.live' }
+const NAME: Record<Persona, string> = { engineer: 'Anmol Jain', dj: 'A.FM' }
+const ROLE: Record<Persona, string> = { engineer: 'Platform engineer', dj: 'DJ · Professional Song Finder' }
 
 /**
  * The slab that covers the persona swap. It is painted in the INCOMING

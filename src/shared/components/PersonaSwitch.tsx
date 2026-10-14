@@ -1,13 +1,13 @@
 import type { Persona } from '../hooks/usePersona'
 import Clock from './Clock'
 
-const TAG: Record<Persona, string> = { engineer: 'Platform engineer', dj: 'AFM · DJ' }
+const TAG: Record<Persona, string> = { engineer: 'Platform engineer', dj: 'A.FM · DJ' }
 
 export default function PersonaSwitch({ persona, other, go }:
   { persona: Persona; other: Persona; go: (p: Persona) => void }) {
   return (
     <div className="rail">
-      <span className="rail-id">{persona === 'dj' ? 'AFM' : 'Anmol Jain'}</span>
+      <span className="rail-id">{persona === 'dj' ? 'A.FM' : 'Anmol Jain'}</span>
       <div className="rail-r">
         <span className="rail-now">{TAG[persona]}</span>
         <Clock />

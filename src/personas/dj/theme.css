@@ -83,3 +83,24 @@
 @media (hover:hover) and (pointer:fine){
   .dj-lk:hover{border-color:var(--signal);color:var(--signal)}
 }
+
+/* ───── the room behind the hero ─────
+   Scrim is weighted to the bottom because the headline sits there; the
+   photo carries the top third where there is no type. */
+.dj-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.dj-media img{width:100%;height:100%;object-fit:cover;object-position:center 38%;
+  opacity:.52;filter:saturate(.85)}
+.dj-media::after{content:"";position:absolute;inset:0;background:linear-gradient(
+  180deg,rgba(9,9,11,.62) 0%,rgba(9,9,11,.18) 28%,rgba(9,9,11,.88) 78%,#09090B 100%)}
+:root[data-persona="dj"] .big-hero > :not(.dj-media){position:relative;z-index:1}
+
+/* ───── room strip ───── */
+.dj-strip{display:flex;gap:var(--s3);overflow-x:auto;scroll-snap-type:x mandatory;
+  margin-bottom:var(--s6);padding-bottom:var(--s3);
+  scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.dj-strip figure{flex:0 0 auto;width:clamp(180px,22vw,290px);margin:0;scroll-snap-align:start}
+.dj-strip img{width:100%;height:clamp(240px,30vw,390px);object-fit:cover;display:block;
+  filter:saturate(.9);transition:filter var(--d-ui) var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.dj-strip figure:hover img{filter:saturate(1.12)}}
+.dj-strip::-webkit-scrollbar{height:3px}
+.dj-strip::-webkit-scrollbar-thumb{background:var(--line2)}

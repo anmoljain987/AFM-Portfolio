@@ -8,6 +8,9 @@ export default function Hero() {
   const loop = [...MARQUEE, ...MARQUEE]
   return (
     <header className="big-hero">
+      <div className="dj-media" aria-hidden="true">
+        <img src="/afm/hero.jpg" alt="" width="1800" height="1350" fetchPriority="high" />
+      </div>
       <h1 className="big-type">
         <span className="ln"><SplitText text={DJ.line1} delay={0.04} /></span>
         <span className="ln ind"><SplitText text={DJ.line2} delay={0.12} /></span>

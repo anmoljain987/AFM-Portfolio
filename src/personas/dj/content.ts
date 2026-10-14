@@ -13,7 +13,7 @@ export const DJ = {
   line2: 'the records',
   line3: 'and I write',
   line4: 'the software.',
-  sub: 'I play, and I write the software I play with. AFM started because no tool did what I actually needed between a messy library and a clean set.',
+  sub: 'I play, and I write the software I play with. A.FM started because no tool did what I actually needed between a messy library and a clean set.',
 }
 
 /** Straight off the A.FM bio. The song-finder line is the spine of this page:
@@ -23,8 +23,30 @@ export const SOUND = {
   body: 'House and tech, and anything that slaps. The job is the same either way: find the record nobody else is playing, then put it somewhere it lands.',
 }
 
-/** Rooms played. Empty until confirmed — the section hides itself. */
-export const PLAYED: { venue: string; city: string; when: string }[] = []
+/** Rooms played. Dates inferred from the capture dates of the folder media,
+ *  so they need confirming before this goes public. City only where known. */
+export const PLAYED: { venue: string; city?: string; when: string }[] = [
+  { venue: '9xm', when: 'Sep 2026' },
+  { venue: 'Sunrise Club', when: 'Sep 2026' },
+  { venue: 'District 909', when: 'Sep 2026' },
+  { venue: 'Garam Masala', when: 'Jul 2026' },
+  { venue: 'Day Dreams', when: 'Jun 2026' },
+  { venue: 'Random Fridays', when: 'May 2026' },
+  { venue: 'House & Beyond', city: 'New Delhi', when: 'Feb 2026' },
+  { venue: 'Kampai', when: 'Feb 2026' },
+  { venue: 'Komo House', city: 'Chandigarh', when: 'Feb 2026' },
+  { venue: 'Komo House', city: 'Chandigarh', when: 'Jan 2026' },
+  { venue: 'OKO', when: 'Nov 2025' },
+]
+
+/** Shot in the rooms above. */
+export const SHOTS = [
+  { src: '/afm/komo-house.jpg', alt: 'Behind the decks under the Komo House sign' },
+  { src: '/afm/decks.jpg', alt: 'Hands on the CDJs' },
+  { src: '/afm/crowd.jpg', alt: 'Crowd at House & Beyond' },
+  { src: '/afm/hands.jpg', alt: 'Hands up on the floor' },
+  { src: '/afm/komo-night.jpg', alt: 'Playing at Komo House' },
+]
 
 /** Mixes to listen to. Empty until links arrive — the section hides itself. */
 export const MIXES: { title: string; platform: string; url: string; when?: string }[] = []
