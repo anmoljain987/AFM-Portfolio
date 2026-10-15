@@ -131,3 +131,17 @@
   .eng-layer{grid-template-columns:1fr;gap:var(--s2)}
   .eng-layer .tg{justify-content:flex-start}
 }
+
+/* ───── recognised ───── */
+.eng-rec{border-top:var(--rule) solid var(--line)}
+.eng-r{display:grid;grid-template-columns:var(--col-label) minmax(0,1fr) auto;gap:var(--s4);
+  align-items:baseline;padding:var(--s4) 0;border-bottom:var(--rule) solid var(--line)}
+.eng-r .y{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;color:var(--signal)}
+.eng-r .t{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(1.05rem,calc(1.6 * var(--vu)),1.6rem);text-transform:uppercase;
+  letter-spacing:-.01em;line-height:1}
+.eng-r .d{color:var(--muted);font-size:var(--t-body);margin-top:var(--s1);line-height:1.6}
+.eng-r .g{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--dim);border:var(--rule) solid var(--line2);
+  padding:var(--s1) var(--s2);border-radius:2px;white-space:nowrap}
+@media (max-width:860px){.eng-r{grid-template-columns:1fr;gap:var(--s1)}.eng-r .g{justify-self:start}}

@@ -132,3 +132,38 @@ export const STACK = [
     tools: ['Kubernetes', 'Argo CD', 'AWS', 'Jenkins', 'Grafana', 'OpenTelemetry'],
   },
 ]
+
+/** Recognition. Third-party first — a vendor publishing a case study about
+ *  your work outranks anything self-reported. */
+export const RECOGNITION = [
+  {
+    y: 'Dec 2025',
+    t: 'ClickHouse published a case study on FabFunnel',
+    d: 'Queries from 11 seconds to under one. Their write-up, not ours.',
+    tag: 'Case study',
+  },
+  {
+    y: 'Mar 2025',
+    t: 'Speaker, ClickHouse Meetup Gurgaon',
+    d: '"FabFunnel & ClickHouse — Real-Time Marketing Analytics", with Siddhant Gaba.',
+    tag: 'Talk',
+  },
+  {
+    y: 'Apr 2026',
+    t: 'Above & Beyond Innovations Award, Idea Clan',
+    d: 'Fourth recognition in four years.',
+    tag: 'Award',
+  },
+  {
+    y: '2025',
+    t: 'Catalyst Award, Idea Clan',
+    d: 'For being the cause in the matter. Third consecutive year.',
+    tag: 'Award',
+  },
+  {
+    y: '2025',
+    t: 'Apollo GraphQL — API Orchestration, Associate',
+    d: 'Certification.',
+    tag: 'Cert',
+  },
+]

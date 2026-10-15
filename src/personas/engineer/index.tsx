@@ -7,6 +7,7 @@ import Numbers from './sections/Numbers'
 import Stack from './sections/Stack'
 import Work from './sections/Work'
 import Principles from './sections/Principles'
+import Recognition from './sections/Recognition'
 import Path from './sections/Path'
 import Before from './sections/Before'
 import Contact from './sections/Contact'
@@ -32,6 +33,7 @@ export default function Engineer() {
         <Themed theme="bone"><Numbers /></Themed>
         <Themed theme="ink"><Work /></Themed>
         <Themed theme="bone"><Principles /></Themed>
+        <Themed theme="signal"><Recognition /></Themed>
         <Themed theme="ink"><Path /></Themed>
         <Themed theme="clay"><Before /></Themed>
         <Themed theme="bone"><Contact /></Themed>

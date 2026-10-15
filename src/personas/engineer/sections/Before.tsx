@@ -5,7 +5,7 @@ import { BEFORE, EDUCATION } from '../content'
 export default function Before() {
   return (
     <section className="shell" id="before">
-      <Reveal><SectionHead n="07" title="Before this" note="table tennis, then code" /></Reveal>
+      <Reveal><SectionHead n="08" title="Before this" note="table tennis, then code" /></Reveal>
       <Reveal d={0.04}>
         <div className="eng-before">
           <p className="lede">{BEFORE.lede}</p>
