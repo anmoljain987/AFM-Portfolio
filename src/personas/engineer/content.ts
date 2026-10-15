@@ -139,7 +139,7 @@ export const RECOGNITION = [
   {
     y: 'Dec 2025',
     t: 'ClickHouse published a case study on FabFunnel',
-    d: 'Queries from 11 seconds to under one. Their write-up, not ours.',
+    d: 'Queries from 11 seconds to under one. 11.67 trillion rows read and 606 TB handled, all time, at the time of writing. Their numbers, not ours.',
     tag: 'Case study',
   },
   {
