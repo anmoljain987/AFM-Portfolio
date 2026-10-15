@@ -18,18 +18,18 @@ export const HERO = {
 
 /** Every number here is measured. `how` is shown on hover. */
 export const METRICS = [
-  { k: '600B', unit: 'rows / month', label: 'scanned across four production ClickHouse clusters',
-    how: 'system.query_log, 30-day window, all replicas' },
-  { k: '113–216', unit: 'ms p95', label: 'query latency held under load',
-    how: 'same query_log window, per cluster' },
-  { k: '2.3B', unit: 'rows stored', label: 'live across the four clusters',
-    how: 'system.parts, active parts only' },
+  { k: '~5B', unit: 'rows live', label: 'across the two production ClickHouse clusters',
+    how: 'system.parts, active parts only, Oct 2026: 4.13B Lookfinity + 565M FabFunnel + 271M pre-prod' },
+  { k: '117–131', unit: 'ms p95', label: 'query latency on both production clusters under real load',
+    how: 'clusterAllReplicas(system.query_log), ClickHouse internal telemetry excluded' },
+  { k: '~66M', unit: 'queries / month', label: 'served across the two production clusters',
+    how: 'rate from the retained query_log window; Cloud keeps only 1–3 hours of it' },
+  { k: '215', unit: 'tables in production', label: 'schemas I design, sort keys and dedupe decided per table',
+    how: 'system.parts, both production clusters' },
   { k: '~40', unit: 'of 95 services', label: 'owned outright; shipped in 89 of 104 repos',
     how: 'service ownership register + git authorship' },
   { k: '1,700', unit: 'runs / day', label: 'automation firing on a strict 15-minute cycle',
     how: '100.0% of its queries land on :00/:15/:30/:45' },
-  { k: '10', unit: 'services originated', label: 'across two generations of the platform',
-    how: 'first-commit authorship' },
 ]
 
 export const WORK = [

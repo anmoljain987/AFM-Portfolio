@@ -5,8 +5,8 @@ const MARQUEE = ['meta', 'google', 'tiktok', 'snapchat', 'newsbreak', 'openai ad
   'smartnews', 'mediago', 'bigo', 'shopify', 'voluum', 'redtrack', 'clickflare']
 
 const FIGURES = [
-  { n: '600B', u: 'rows / month' },
-  { n: '113–216', u: 'ms p95' },
+  { n: '~5B', u: 'rows live' },
+  { n: '117–131', u: 'ms p95' },
   { n: '~40 / 95', u: 'services owned' },
   { n: '1,700', u: 'runs / day' },
 ]

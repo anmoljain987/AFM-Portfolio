@@ -24,7 +24,7 @@ export const NODES: PNode[] = [
   { id: 'norm', label: 'normalisation', kind: 'normalise', pos: [0, 0, -2.6], note: 'one schema, 15 in' },
   { id: 'kafka', label: 'Kafka', kind: 'transport', pos: [0, 0, -0.5] },
   { id: 'vector', label: 'Vector', kind: 'transport', pos: [0, 0, 1.3] },
-  { id: 'ch', label: 'ClickHouse', kind: 'store', pos: [0, 0, 3.3], note: '600B rows/mo · 113ms p95' },
+  { id: 'ch', label: 'ClickHouse', kind: 'store', pos: [0, 0, 3.3], note: '~5B rows live · 117ms p95' },
   { id: 'report', label: 'reporting', kind: 'out', pos: [-3.0, 0.2, 5.6] },
   { id: 'auto', label: 'automation engine', kind: 'out', pos: [3.0, -0.2, 5.6], note: '~1,700 runs/day' },
 ]

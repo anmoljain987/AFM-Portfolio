@@ -25,8 +25,8 @@ export default function Engineer() {
         <Themed theme="ink"><Diagram /></Themed>
         <Themed theme="signal">
           <WordBreak
-            word="600 billion"
-            caption="Rows scanned a month, across four production ClickHouse clusters. Counted from system.query_log over a rolling thirty days — not estimated."
+            word="Five billion"
+            caption="Rows live across the two production ClickHouse clusters. Counted from system.parts in October 2026, active parts only — not estimated."
           />
         </Themed>
         <Themed theme="clay"><Stack /></Themed>
