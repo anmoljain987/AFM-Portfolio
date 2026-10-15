@@ -4,9 +4,11 @@ import WordBreak from '../../shared/components/WordBreak'
 import Hero from './sections/Hero'
 import Diagram from './sections/Diagram'
 import Numbers from './sections/Numbers'
+import Stack from './sections/Stack'
 import Work from './sections/Work'
 import Principles from './sections/Principles'
 import Path from './sections/Path'
+import Before from './sections/Before'
 import Contact from './sections/Contact'
 
 /**
@@ -26,10 +28,12 @@ export default function Engineer() {
             caption="Rows scanned a month, across four production ClickHouse clusters. Counted from system.query_log over a rolling thirty days — not estimated."
           />
         </Themed>
+        <Themed theme="clay"><Stack /></Themed>
         <Themed theme="bone"><Numbers /></Themed>
-        <Themed theme="clay"><Work /></Themed>
+        <Themed theme="ink"><Work /></Themed>
         <Themed theme="bone"><Principles /></Themed>
         <Themed theme="ink"><Path /></Themed>
+        <Themed theme="clay"><Before /></Themed>
         <Themed theme="bone"><Contact /></Themed>
       </main>
     </>

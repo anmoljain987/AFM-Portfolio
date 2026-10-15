@@ -7,6 +7,7 @@ export default function Contact() {
       <Reveal>
         <h2>Happy to talk about data<br />infrastructure at scale.</h2>
         <div className="eng-links">
+          <a className="eng-lk eng-lk-cv" href="/Anmol-Jain-Resume.pdf" download>Résumé (PDF) ↓</a>
           <a className="eng-lk" href={`mailto:${PERSON.email}`}>{PERSON.email}</a>
           <a className="eng-lk" href={PERSON.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
           <a className="eng-lk" href={PERSON.github} target="_blank" rel="noreferrer">GitHub ↗</a>

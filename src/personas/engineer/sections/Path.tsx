@@ -5,7 +5,7 @@ import { TIMELINE } from '../content'
 export default function Path() {
   return (
     <section className="shell" id="path">
-      <Reveal><SectionHead n="05" title="Four years, one company" note="junior to lead in 22 months" /></Reveal>
+      <Reveal><SectionHead n="06" title="Four years, one company" note="junior to lead in 22 months" /></Reveal>
       <div className="eng-path">
         {TIMELINE.map((r, i) => (
           <Reveal key={r.t} d={i * 0.03}>

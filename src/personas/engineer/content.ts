@@ -13,7 +13,7 @@ export const HERO = {
   line2: 'disagree.',
   line3: 'I make them',
   line4: 'agree.',
-  sub: 'I own the platform layer behind two advertising SaaS products: the integration services, the pipeline underneath them, and the automation that acts on live ad accounts.',
+  sub: 'I build across the whole stack on two advertising SaaS products — the React front end, the GraphQL layer that feeds it, the integration services behind that, the pipeline underneath them, and the automation that acts on live ad accounts.',
 }
 
 /** Every number here is measured. `how` is shown on hover. */
@@ -56,12 +56,12 @@ export const WORK = [
   {
     t: 'A playbook, not a project',
     d: 'Standing up a new platform integration used to be bespoke. It is now a documented procedure: API grounding, data model, permissions, ingest path, charts, frontend. Build time halved; five tracks ran in parallel across three engineers.',
-    tags: ['Platform', 'Standards', 'Leverage'],
+    tags: ['Platform', 'React', 'End to end'],
   },
   {
     t: 'Standards beyond my own team',
     d: 'Authored the frontend branching and merge policy the organisation adopted, and brokered the working agreement between QA and engineering that ended a multi-day dispute. 122 implementation guides across 42 repositories behind both.',
-    tags: ['Governance', 'Docs', 'Process'],
+    tags: ['Frontend policy', 'Governance', 'Process'],
   },
 ]
 
@@ -77,4 +77,58 @@ export const TIMELINE = [
   { y: '< 12 mo', t: 'Managing someone', d: 'Before the end of the first year.' },
   { y: 'Sep 2022', t: 'Full Stack Developer', d: 'First promotion, at three months.' },
   { y: 'Apr 2024', t: 'SDE-II · Team Lead', d: 'Leading the team by month 22. Still writing code daily.' },
+]
+
+/** Before software. The coaching numbers are the same kind of claim as the
+ *  rest of this page: counted, not rounded up. */
+export const BEFORE = {
+  lede: 'I played table tennis at national level and coached for five years before I wrote any software.',
+  stats: [
+    { k: '50+', u: 'students coached' },
+    { k: '15', u: 'reached state level' },
+    { k: '7', u: 'reached national level' },
+    { k: '5', u: 'years coaching' },
+  ],
+  note: 'Reading a pattern instead of reacting to the last point is the same instinct in both jobs.',
+}
+
+export const EDUCATION = [
+  { y: '2021 – 2022', t: 'Masai School, Bengaluru', d: 'Full Stack Web Development' },
+  { y: '2018 – 2021', t: 'Guru Nanak Khalsa College', d: 'BSc, Sports Science' },
+  { y: '2016 – 2018', t: 'Kendriya Vidyalaya No.1, Ambala', d: 'Senior School, CBSE' },
+]
+
+/** The full-stack claim, made specific. Every layer here is one he ships in,
+ *  not one he has an opinion about. */
+export const STACK = [
+  {
+    layer: 'Interface',
+    what: 'Reporting tables, filter builders, launch flows. I wrote the branching and merge policy the whole frontend team now runs on, and I review the PRs against it.',
+    tools: ['React', 'TypeScript', 'Vite', 'Redux Toolkit', 'React Hook Form'],
+  },
+  {
+    layer: 'API',
+    what: 'One federated graph over a dozen subgraphs, plus the REST routes services call each other on. Schema changes are contracts, so they ship back end first.',
+    tools: ['GraphQL Federation', 'Apollo', 'REST'],
+  },
+  {
+    layer: 'Services',
+    what: 'Around forty of the ninety-five services in the ecosystem, and I have shipped in eighty-nine of the hundred and four repositories.',
+    tools: ['Node.js', 'TypeScript', 'Python', 'Celery'],
+  },
+  {
+    layer: 'Messaging',
+    what: 'Fan-out and fan-in across platform syncs, bulk actions and the automation engine. Idempotency and replay are the hard parts, not throughput.',
+    tools: ['Kafka', 'RabbitMQ', 'Temporal'],
+  },
+  {
+    layer: 'Storage',
+    what: 'Four production ClickHouse clusters for analytics, Postgres for state, Redis for the hot path. Sort keys and dedupe strategy decided per table, not by default.',
+    tools: ['ClickHouse', 'Postgres', 'Redis', 'Vector'],
+  },
+  {
+    layer: 'Run',
+    what: 'The services I own are deployed, observed and alerted on by me. If it pages at 3am it is mine to answer.',
+    tools: ['Kubernetes', 'Argo CD', 'AWS', 'Jenkins', 'Grafana', 'OpenTelemetry'],
+  },
 ]

@@ -94,3 +94,40 @@
   .eng-w .tg{grid-column:1;justify-content:flex-start}
   .eng-w .i{padding-top:0}
 }
+
+/* ───── before this ───── */
+.eng-before{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+  gap:var(--s6);align-items:start}
+.eng-before .lede{font-family:var(--display);font-variation-settings:"wdth" 68,"wght" 600;
+  font-size:clamp(1.3rem,calc(2.8 * var(--vu)),2.8rem);line-height:1.06;
+  letter-spacing:-.015em;max-width:24ch}
+.tt-stats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+.tt-stats .k{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-feature-settings:"tnum" 1;font-size:clamp(1.5rem,calc(2.6 * var(--vu)),2.6rem);
+  line-height:.92;display:block}
+.tt-stats .u{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--signal);display:block;margin-top:var(--s1)}
+.eng-before-note{color:var(--muted);font-size:var(--t-body);max-width:58ch;
+  margin-top:var(--s5);line-height:1.65}
+.eng-edu{margin-top:var(--s6)}
+.eng-lk-cv{border-color:var(--signal);color:var(--signal)}
+@media (max-width:860px){.eng-before{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* ───── end to end ───── */
+.eng-stack{border-top:var(--rule) solid var(--line)}
+.eng-layer{display:grid;grid-template-columns:var(--col-label) minmax(0,1.5fr) minmax(0,1fr);
+  gap:var(--s4);align-items:start;padding:var(--s4) 0;
+  border-bottom:var(--rule) solid var(--line);transition:background .2s}
+.eng-layer .lay{font-family:var(--display);font-variation-settings:"wdth" 62,"wght" 700;
+  font-size:clamp(1.1rem,calc(1.7 * var(--vu)),1.75rem);text-transform:uppercase;
+  letter-spacing:-.01em;line-height:.95}
+.eng-layer .wht{color:var(--muted);font-size:var(--t-body);line-height:1.62}
+.eng-layer .tg{display:flex;flex-wrap:wrap;gap:var(--s1);align-content:start;justify-content:flex-end}
+.eng-layer .tg span{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dim);border:var(--rule) solid var(--line2);
+  padding:var(--s1) var(--s2);border-radius:2px}
+@media (hover:hover) and (pointer:fine){.eng-layer:hover{background:var(--raise)}}
+@media (max-width:860px){
+  .eng-layer{grid-template-columns:1fr;gap:var(--s2)}
+  .eng-layer .tg{justify-content:flex-start}
+}
