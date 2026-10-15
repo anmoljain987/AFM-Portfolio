@@ -10,13 +10,13 @@ const src = readFileSync(new URL('index.html', DIST), 'utf8')
 
 const SWAPS = [
   ['Anmol Jain — Platform Engineer', 'AFM — DJ, and the software behind it'],
-  ['Fifteen data sources. One schema. 600 billion rows a month at sub-250ms p95.',
-   'I play, and I write the software I play with. AFM is the local-first library workstation behind the sets.'],
+  ['Full-stack engineer on two advertising SaaS products. Fifteen data sources into one schema, ~5B rows live on ClickHouse, p95 under 135ms.',
+   'A.FM. House, tech, and whatever slaps. Chandigarh. Eleven rooms and counting, and the library workstation behind the sets.'],
   ['og-engineer.png', 'og-dj.png'],
   ['href="/favicon.svg"', 'href="/afm/badge.png"'],
   ['https://anmoljain987.vercel.app/"', 'https://anmoljain987.vercel.app/dj"'],
-  ['I own the layer where fifteen data sources become one. 600 billion rows a month on ClickHouse at sub-250ms p95.',
-   'AFM. DJ, and the local-first library workstation behind the sets.'],
+  ['A.FM. DJ, and the local-first library workstation behind the sets.',
+   'A.FM. DJ, and the local-first library workstation behind the sets.'],
 ]
 
 let out = src
